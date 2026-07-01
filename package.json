@@ -1,0 +1,12 @@
+{
+  "name": "tripmind-ai",
+  "version": "1.0.0",
+  "description": "TripMind AI - Multi-Agent Travel Planner",
+  "scripts": {
+    "install:all": "cd backend && npm install && cd ../frontend && npm install",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "docker:up": "cd docker && docker-compose up --build",
+    "docker:down": "cd docker && docker-compose down"
+  }
+}
