@@ -1,8 +1,1 @@
-﻿{
-  "name": "tripmind-ai",
-  "version": "1.0.0",
-  "scripts": {
-    "start": "cd backend && node src/server.js",
-    "build": "cd backend && npm install"
-  }
-}
+﻿{"name":"tripmind-ai","version":"1.0.0","scripts":{"start":"cd backend && node src/server.js","build":"cd backend && npm install"}}
