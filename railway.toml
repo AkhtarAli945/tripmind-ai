@@ -1,0 +1,7 @@
+@'
+[build]
+builder = "nixpacks"
+
+[deploy]
+startCommand = "cd backend && node src/server.js"
+'@ | Set-Content -Encoding utf8 railway.toml
