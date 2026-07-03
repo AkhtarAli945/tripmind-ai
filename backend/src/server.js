@@ -123,6 +123,13 @@
 // export default app;
 
 
+console.log('>>> SERVER FILE STARTED <<<');
+
+import 'dotenv/config';
+import express from 'express';
+// ... baaki imports
+
+
 import 'dotenv/config';
 import express from 'express';
 import { createServer } from 'http';
