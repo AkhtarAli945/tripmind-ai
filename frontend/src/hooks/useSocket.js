@@ -1,17 +1,22 @@
-import { useEffect, useRef, useCallback } from 'react';
-import { io } from 'socket.io-client';
+import { useEffect, useRef, useCallback } from "react";
+import { io } from "socket.io-client";
 
 export const useSocket = (sessionId, handlers = {}) => {
   const socketRef = useRef(null);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     if (!token || !sessionId) return;
 
-    socketRef.current = io('/', { auth: { token }, transports: ['websocket'] });
+    // socketRef.current = io('/', { auth: { token }, transports: ['websocket'] });
 
-    socketRef.current.on('connect', () => {
-      socketRef.current.emit('join:session', sessionId);
+    socketRef.current = io(import.meta.env.VITE_API_BASE_URL, {
+      auth: { token },
+      transports: ["websocket"],
+    });
+
+    socketRef.current.on("connect", () => {
+      socketRef.current.emit("join:session", sessionId);
     });
 
     Object.entries(handlers).forEach(([event, handler]) => {
@@ -19,7 +24,7 @@ export const useSocket = (sessionId, handlers = {}) => {
     });
 
     return () => {
-      socketRef.current?.emit('leave:session', sessionId);
+      socketRef.current?.emit("leave:session", sessionId);
       socketRef.current?.disconnect();
     };
   }, [sessionId]);
